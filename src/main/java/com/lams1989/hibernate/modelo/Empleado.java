@@ -1,10 +1,11 @@
 package com.lams1989.hibernate.modelo;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
@@ -12,33 +13,39 @@ import javax.persistence.Table;
 public class Empleado implements Serializable {
 
 	private static final long serialVersionUID = 1L;
+
+	@Id
 	@Column(name = "COD_EMPLEADO")
-	private Long Codigo;
+	private Long codigo;
+
 	@Column(name = "APELLIDOS")
 	private String apellidos;
+
 	@Column(name = "NOMBRE")
 	private String nombre;
+
 	@Column(name = "FECHA_NACIMIENTO")
-	private Date fechaNacimiento;
+	private LocalDate fechaNacimiento;
 
-	public Empleado() {
-
-	}
-
-	public Empleado(Long codigo, String apellidos, String nombre, Date fechaNacimiento) {
-
-		Codigo = codigo;
+	public Empleado(Long codigo, String apellidos, String nombre, LocalDate fechaNacimiento) {
+		super();
+		this.codigo = codigo;
 		this.apellidos = apellidos;
 		this.nombre = nombre;
 		this.fechaNacimiento = fechaNacimiento;
 	}
 
+	public Empleado() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	public Long getCodigo() {
-		return Codigo;
+		return codigo;
 	}
 
 	public void setCodigo(Long codigo) {
-		Codigo = codigo;
+		this.codigo = codigo;
 	}
 
 	public String getApellidos() {
@@ -57,17 +64,18 @@ public class Empleado implements Serializable {
 		this.nombre = nombre;
 	}
 
-	public Date getFechaNacimiento() {
+	public LocalDate getFechaNacimiento() {
 		return fechaNacimiento;
 	}
 
-	public void setFechaNacimiento(Date fechaNacimiento) {
+	public void setFechaNacimiento(LocalDate fechaNacimiento) {
 		this.fechaNacimiento = fechaNacimiento;
 	}
 
 	@Override
 	public String toString() {
-		return "Empleado [Codigo=" + Codigo + ", apellidos=" + apellidos + ", nombre=" + nombre + ", fechaNacimiento="
+		return "Empleado [codigo=" + codigo + ", apellidos=" + apellidos + ", nombre=" + nombre + ", fechaNacimiento="
 				+ fechaNacimiento + "]";
 	}
+
 }
