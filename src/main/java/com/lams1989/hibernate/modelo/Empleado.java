@@ -3,9 +3,12 @@ package com.lams1989.hibernate.modelo;
 import java.io.Serializable;
 import java.time.LocalDate;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -24,8 +27,15 @@ public class Empleado implements Serializable {
 	@Column(name = "NOMBRE")
 	private String nombre;
 
-	@Column(name = "FECHA_NACIMIENTO")
+	@Column (name = "FECHA_NACIMIENTO")
 	private LocalDate fechaNacimiento;
+
+	@OneToOne(cascade = { CascadeType.ALL })
+	@JoinColumn(name = "ID_DIRECCION")
+	private Direccion direccion;
+
+	public Empleado() {
+	}
 
 	public Empleado(Long codigo, String apellidos, String nombre, LocalDate fechaNacimiento) {
 		super();
@@ -33,11 +43,6 @@ public class Empleado implements Serializable {
 		this.apellidos = apellidos;
 		this.nombre = nombre;
 		this.fechaNacimiento = fechaNacimiento;
-	}
-
-	public Empleado() {
-		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Long getCodigo() {
@@ -72,10 +77,19 @@ public class Empleado implements Serializable {
 		this.fechaNacimiento = fechaNacimiento;
 	}
 
+	public Direccion getDireccion() {
+		return direccion;
+	}
+
+	public void setDireccion(Direccion direccion) {
+		this.direccion = direccion;
+	}
+
 	@Override
 	public String toString() {
 		return "Empleado [codigo=" + codigo + ", apellidos=" + apellidos + ", nombre=" + nombre + ", fechaNacimiento="
-				+ fechaNacimiento + "]";
+				+ fechaNacimiento + ", direccion=" + direccion + "]";
 	}
+	
 
 }

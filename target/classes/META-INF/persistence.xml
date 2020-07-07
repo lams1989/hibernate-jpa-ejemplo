@@ -4,6 +4,8 @@
 
 	<persistence-unit name="Persistencia">
 		<class>com.lams1989.hibernate.modelo.Empleado</class>
+		<class>com.lams1989.hibernate.modelo.Autor</class>
+		<class>com.lams1989.hibernate.modelo.Libro</class>
 
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="org.h2.Driver" />
