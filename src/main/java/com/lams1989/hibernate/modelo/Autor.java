@@ -70,7 +70,20 @@ public class Autor {
 		this.libros = libros;
 	}
 
-	
+	public void addLibro(Libro libro) {
+		if (!libros.contains(libro)) {
+			libros.add(libro);
+			libro.setAutor(this);
+		}
+	}
+
+	public void removeLibro(Libro libro) {
+		if (libros.contains(libro)) {
+			libros.remove(libro);
+			libro.setAutor(null);
+		}
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
