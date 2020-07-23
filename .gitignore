@@ -26,5 +26,5 @@ build/
 local.properties
 .loadpath
 .factorypath
+target/
 
-/target/
